@@ -1,0 +1,47 @@
+esphome:
+  name: Garagensteuerung
+  friendly_name: Garagensteuerung
+  project:
+    name: "vdwals.garagensteuerung"
+    version: "1.0.0"
+  name_add_mac_suffix: False
+  area: Garage
+  libraries:
+    - emelianov/modbus-esp8266 # Required for communication with the modbus
+
+# Enable logging
+logger:
+  baud_rate: 0
+    
+external_components:
+    #source: github://mapero/esphome-hcpbridge
+    source: github://vdwals/esphome-hcpbridge@feature/dual_connection
+    refresh: 0s # Ensure you always get the latest version
+
+hcpbridge:
+  is_connected: # Sensor to display the connection status to the motor
+    name: "Rechte HCPBridge Verbunden"
+  rx_pin: 16
+  tx_pin: 17
+
+#hcpbridge2:
+#  is_connected: # Sensor to display the connection status to the motor
+#    name: "Linke HCPBridge Verbunden"
+#  rx_pin: 3
+#  tx_pin: 1
+
+cover:
+  - platform: hcpbridge
+    name: Garagentor rechts
+    device_class: garage
+    id: garagedoor_rechts
+#  - platform: hcpbridge2
+#    name: Garagentor links
+#    device_class: garage
+#    id: garagedoor_links
+
+switch:
+  - platform: hcpbridge
+    name: Garagenlicht rechts
+#  - platform: hcpbridge2
+#    name: Garagenlicht links

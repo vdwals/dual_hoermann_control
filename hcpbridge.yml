@@ -1,0 +1,14 @@
+hcpbridge${lib}:
+  is_connected: # Sensor to display the connection status to the motor
+    name: "HCPBridge ${side} Verbunden"
+  rx_pin: ${rx_pin}
+  tx_pin: ${tx_pin}
+
+cover:
+  - platform: hcpbridge${lib}
+    name: Garagentor ${side}
+    device_class: garage
+
+switch:
+  - platform: hcpbridge${lib}
+    name: Garagenlicht ${side}
