@@ -3,7 +3,7 @@ esphome:
   friendly_name: "Garagensteuerung"
   project:
     name: "vdwals.garagensteuerung"
-    version: "1.0.1"
+    version: "1.0.2"
   name_add_mac_suffix: False
   area: "Garage"
   libraries:
@@ -20,7 +20,7 @@ external_components:
 
 packages:
   left_garage_door: !include
-    file: hcpbridge.yaml
+    file: hcpbridge.yml
     vars:
       rx_pin: 3
       tx_pin: 1
@@ -29,7 +29,7 @@ packages:
 
 packages:
   left_garage_door: !include
-    file: hcpbridge.yaml
+    file: hcpbridge.yml
     vars:
       rx_pin: 16
       tx_pin: 17
