@@ -3,7 +3,7 @@ esphome:
   friendly_name: "Garagensteuerung"
   project:
     name: "vdwals.garagensteuerung"
-    version: "1.0.0"
+    version: "1.0.1"
   name_add_mac_suffix: False
   area: "Garage"
   libraries:
