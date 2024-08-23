@@ -3,7 +3,7 @@ esphome:
   friendly_name: "Garagensteuerung"
   project:
     name: "vdwals.garagensteuerung"
-    version: "1.0.3"
+    version: "1.1.0"
   name_add_mac_suffix: False
   area: "Garage"
   libraries:
@@ -18,18 +18,28 @@ external_components:
     source: github://vdwals/esphome-hcpbridge@feature/dual_connection
     refresh: 0s # Ensure you always get the latest version
 
-packages:
-  right_garage_door: !include
-    file: hcpbridge.yml
-    vars:
-      rx_pin: 3
-      tx_pin: 1
-      lib: ""
-      side: "rechts"
-  left_garage_door: !include
-    file: hcpbridge.yml
-    vars:
-      rx_pin: 16
-      tx_pin: 17
-      lib: "2"
-      side: "links"
+hcpbridge:
+  is_connected: # Sensor to display the connection status to the motor
+    name: "HCPBridge rechts Verbunden"
+  rx_pin: 3
+  tx_pin: 1
+  
+hcpbridge2:
+  is_connected: # Sensor to display the connection status to the motor
+    name: "HCPBridge links Verbunden"
+  rx_pin: 16
+  tx_pin: 17
+
+cover:
+  - platform: hcpbridge
+    name: Garagentor rechts
+    device_class: garage
+  - platform: hcpbridge2
+    name: Garagentor links
+    device_class: garage
+
+switch:
+  - platform: hcpbridge
+    name: Garagenlicht rechts
+  - platform: hcpbridge2
+    name: Garagenlicht links
