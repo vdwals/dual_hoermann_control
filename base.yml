@@ -1,5 +1,5 @@
 esphome:
-  name: "Garagensteuerung"
+  name: "garagensteuerung"
   friendly_name: "Garagensteuerung"
   project:
     name: "vdwals.garagensteuerung"
@@ -24,7 +24,7 @@ packages:
     vars:
       rx_pin: 3
       tx_pin: 1
-      lib:
+      lib: ""
       side: "rechts"
   left_garage_door: !include
     file: hcpbridge.yml
