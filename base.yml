@@ -14,8 +14,8 @@ logger:
   baud_rate: 0
     
 external_components:
-    #source: github://mapero/esphome-hcpbridge
-    source: github://vdwals/esphome-hcpbridge@feature/dual_connection
+    source: github://mapero/esphome-hcpbridge
+    #source: github://vdwals/esphome-hcpbridge@feature/dual_connection
     refresh: 0s # Ensure you always get the latest version
 
 packages:
@@ -24,12 +24,5 @@ packages:
     vars:
       rx_pin: 3
       tx_pin: 1
-      lib: "1"
+      lib: ""
       side: "rechts"
-  left_garage_door: !include
-    file: hcpbridge.yml
-    vars:
-      rx_pin: 16
-      tx_pin: 17
-      lib: "2"
-      side: "links"
